@@ -146,7 +146,7 @@ export default function Skills() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className={styles.grid}
+          className={styles.skillsGrid}
         >
           {categories.map((cat, i) => (
             <motion.div

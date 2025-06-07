@@ -27,7 +27,7 @@
   color: var(--text-secondary);
 }
 
-.grid {
+.skillsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 3rem;
@@ -112,11 +112,17 @@
     font-size: 1rem;
   }
 
-  .grid {
-    gap: 2rem;
+  .skillsGrid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    border: none;
   }
 
   .category {
     padding: 1.5rem;
+  }
+
+  .category:last-child {
+    grid-column: auto !important;
   }
 } 

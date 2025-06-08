@@ -36,20 +36,37 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
   visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
-      duration: 0.5,
+      duration: 0.6,
+      type: "spring",
+      stiffness: 100,
     },
   },
+};
+
+const linkVariants = {
+  initial: { scale: 1 },
+  hover: { 
+    scale: 1.1,
+    transition: {
+      type: "spring",
+      stiffness: 400,
+      damping: 10
+    }
+  },
+  tap: { scale: 0.95 }
 };
 
 function formatRepoName(name: string) {
@@ -121,43 +138,86 @@ export default function MyWorks() {
                   key={repo.id}
                   variants={itemVariants}
                   className={styles.project}
-                  whileHover={{ scale: 1.04, boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}
+                  whileHover={{ 
+                    scale: 1.05, 
+                    boxShadow: '0 12px 40px rgba(0,0,0,0.15)',
+                    transition: {
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 20
+                    }
+                  }}
                 >
                   <div className={styles.content} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 180, padding: '1.5rem 0' }}>
-                    <h3 className={styles.projectTitle} style={{ fontSize: '1.35rem', fontWeight: 700, marginBottom: 8, textAlign: 'center', letterSpacing: 0.5 }}>
+                    <motion.h3 
+                      className={styles.projectTitle} 
+                      style={{ fontSize: '1.35rem', fontWeight: 700, marginBottom: 8, textAlign: 'center', letterSpacing: 0.5 }}
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "spring", stiffness: 400 }}
+                    >
                       {formatRepoName(repo.name)}
-                      <span style={{ fontSize: '1rem', fontWeight: 500, marginLeft: 10, color: '#fbbf24', verticalAlign: 'middle', display: 'inline-flex', alignItems: 'center' }}>
+                      <motion.span 
+                        style={{ fontSize: '1rem', fontWeight: 500, marginLeft: 10, color: '#fbbf24', verticalAlign: 'middle', display: 'inline-flex', alignItems: 'center' }}
+                        animate={{ 
+                          rotate: [0, 10, -10, 0],
+                          scale: [1, 1.1, 1.1, 1]
+                        }}
+                        transition={{ 
+                          duration: 2,
+                          repeat: Infinity,
+                          repeatType: "reverse"
+                        }}
+                      >
                         ⭐ {repo.stargazers_count}
-                      </span>
-                    </h3>
-                    <div style={{ color: '#888', fontSize: '0.95em', marginBottom: 16, textAlign: 'center' }}>
+                      </motion.span>
+                    </motion.h3>
+                    <motion.div 
+                      style={{ color: '#888', fontSize: '0.95em', marginBottom: 16, textAlign: 'center' }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.3 }}
+                    >
                       Updated {new Date(repo.updated_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}
-                    </div>
-                    <div className={styles.tags} style={{ marginBottom: 16 }}>
+                    </motion.div>
+                    <motion.div 
+                      className={styles.tags} 
+                      style={{ marginBottom: 16 }}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 }}
+                    >
                       {repo.language && (
-                        <span className={styles.tag}>{repo.language}</span>
+                        <motion.span 
+                          className={styles.tag}
+                          whileHover={{ scale: 1.1, backgroundColor: '#6366f1' }}
+                          transition={{ type: "spring", stiffness: 400 }}
+                        >
+                          {repo.language}
+                        </motion.span>
                       )}
-                    </div>
-                    <div className={styles.links}>
-                      <a
+                    </motion.div>
+                    <motion.div 
+                      className={styles.links}
+                      variants={linkVariants}
+                      initial="initial"
+                      whileHover="hover"
+                      whileTap="tap"
+                    >
+                      <motion.a
                         href={repo.html_url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.link}
+                        whileHover={{ 
+                          scale: 1.1,
+                          backgroundColor: '#2563eb',
+                          color: 'white'
+                        }}
+                        transition={{ type: "spring", stiffness: 400 }}
                       >
                         GitHub
-                      </a>
-                      {repo.homepage && (
-                        <a
-                          href={repo.homepage}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={styles.link}
-                        >
-                          Live Demo
-                        </a>
-                      )}
-                    </div>
+                      </motion.a>
+                    </motion.div>
                   </div>
                 </motion.article>
               ))}

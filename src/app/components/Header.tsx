@@ -104,7 +104,57 @@ export default function Header() {
                   }`}
                   whileHover={{ x: 10 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={e => {
+                    e.preventDefault();
+                    const sectionId = item.href.replace('#', '');
+                    const section = document.getElementById(sectionId);
+                    setIsMobileMenuOpen(false);
+                    setTimeout(() => {
+                      // Force override overflow to auto with !important
+                      document.body.style.setProperty('overflow', 'auto', 'important');
+                      document.documentElement.style.setProperty('overflow', 'auto', 'important');
+                      const bodyOverflow = document.body.style.overflow;
+                      const htmlOverflow = document.documentElement.style.overflow;
+                      const computedBodyOverflow = window.getComputedStyle(document.body).overflow;
+                      const computedHtmlOverflow = window.getComputedStyle(document.documentElement).overflow;
+                      console.log('Body overflow:', bodyOverflow, '| Computed:', computedBodyOverflow);
+                      console.log('HTML overflow:', htmlOverflow, '| Computed:', computedHtmlOverflow);
+                      console.log('Scroll position before:', window.scrollY);
+                      if (section) {
+                        // Get header height
+                        const header = document.querySelector('header');
+                        const headerHeight = header ? header.offsetHeight : 64;
+                        const sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
+                        window.scrollTo({
+                          top: sectionTop - headerHeight,
+                          behavior: 'smooth'
+                        });
+                        document.documentElement.scrollTo({
+                          top: sectionTop - headerHeight,
+                          behavior: 'smooth'
+                        });
+                        setTimeout(() => {
+                          console.log('Scroll position after:', window.scrollY);
+                        }, 700);
+                        let parent = section.parentElement;
+                        while (parent && parent !== document.body) {
+                          const overflowY = window.getComputedStyle(parent).overflowY;
+                          if (overflowY === 'auto' || overflowY === 'scroll') {
+                            console.log('Found scrollable parent:', parent);
+                            parent.scrollTo({
+                              top: section.offsetTop - headerHeight,
+                              behavior: 'smooth'
+                            });
+                            break;
+                          }
+                          parent = parent.parentElement;
+                        }
+                      }
+                      // Restore scrolling after closing menu
+                      document.body.style.setProperty('overflow', 'auto', 'important');
+                      document.documentElement.style.setProperty('overflow', 'auto', 'important');
+                    }, 350); // Wait for menu exit animation
+                  }}
                 >
                   {item.name}
                 </motion.a>

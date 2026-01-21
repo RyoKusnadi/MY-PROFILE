@@ -47,7 +47,7 @@ async function fetchRepos(): Promise<GitHubRepo[]> {
 async function fetchMediumPosts(): Promise<MediumPost[]> {
   try {
     const res = await fetch(
-      'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@ryo.kusnadi',
+      'https://api.rss2json.com/v1/api.json?rssx_url=https://medium.com/feed/@ryo.kusnadi',
       { next: { revalidate: 60 * 60 } }
     );
 

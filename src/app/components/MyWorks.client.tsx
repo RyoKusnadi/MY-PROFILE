@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import styles from './Projects.module.css';
 
 type Repo = {
@@ -20,7 +21,7 @@ type MediumPost = {
   pubDate: string;
 };
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -31,7 +32,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
   visible: {
     opacity: 1,
@@ -39,7 +40,7 @@ const itemVariants = {
     scale: 1,
     transition: {
       duration: 0.5,
-      type: 'spring',
+      type: 'spring' as const,
       stiffness: 120,
     },
   },

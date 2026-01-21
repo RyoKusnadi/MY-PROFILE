@@ -56,7 +56,7 @@ export default function About() {
               color: '#374151',
               margin: 0
             }}>
-              I'm a backend-focused engineer at Shopee, passionate about building robust, scalable systems that make a real impact.
+              Principal-minded backend engineer at Shopee, owning reliability, migrations, and data quality at scale. I drive architecture decisions, production readiness, and measurable business outcomes.
             </p>
           </div>
           <div className={styles.grid} style={{ gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'flex-start' }}>
@@ -107,9 +107,9 @@ export default function About() {
                       transition={{ duration: 0.3 }}
                       style={{ margin: '0.5rem 0 0 1.5rem', color: '#374151', fontSize: '1em', background: '#f8fafc', borderRadius: 8, padding: '1rem', boxShadow: '0 2px 8px #0001' }}
                     >
-                      <li>Led the seamless transition from legacy databases to a distributed architecture, achieving zero downtime and improved system performance.</li>
-                      <li>Designed and implemented a real-time monitoring system utilizing Change Data Capture (CDC) and contract-based validation, reducing system downtime by 30% and enabling early anomaly detection.</li>
-                      <li>Reengineered the escrow process with multiple validation layers, including idempotency checks and boundary condition testing, reducing payout discrepancies by 15%.</li>
+                      <li>Drove the strategy and execution to migrate legacy financial databases to a distributed architecture with phased cutovers, achieving zero downtime and higher throughput.</li>
+                      <li>Established real-time correctness guardrails using CDC streams + schema contracts; cut incident time-to-detect by 30% and halted silent data defects.</li>
+                      <li>Re-architected escrow payouts with layered validations (idempotency, boundary/FX checks) and recovery playbooks, reducing payout discrepancies by 15%.</li>
                     </motion.ul>
                   )}
                 </li>
@@ -149,9 +149,9 @@ export default function About() {
                       transition={{ duration: 0.3 }}
                       style={{ margin: '0.5rem 0 0 1.5rem', color: '#374151', fontSize: '1em', background: '#f8fafc', borderRadius: 8, padding: '1rem', boxShadow: '0 2px 8px #0001' }}
                     >
-                      <li>Streamlined buyer invoice generation across multiple services, reducing mismatches by 25%.</li>
-                      <li>Automated the invoice issuance process for Brazil, cutting manual processing time from 5 days to real-time and reducing finance team effort by 90%.</li>
-                      <li>Refactored and optimized legacy code for Shopee Taiwan's receipt issuance flow, resolving recurring system issues and enhancing integration with third-party invoice issuers.</li>
+                      <li>Redesigned multi-service invoice generation with stricter validation and idempotency paths, reducing mismatches by 25%.</li>
+                      <li>Built a real-time invoice pipeline for Brazil to replace batch/manual flows; cut processing from 5 days to real-time and removed 90% of finance ops toil.</li>
+                      <li>Stabilized Taiwan receipt issuance by refactoring legacy flows, closing recurring incidents and hardening third-party issuer integrations.</li>
                     </motion.ul>
                   )}
                 </li>
@@ -191,8 +191,8 @@ export default function About() {
                       transition={{ duration: 0.3 }}
                       style={{ margin: '0.5rem 0 0 1.5rem', color: '#374151', fontSize: '1em', background: '#f8fafc', borderRadius: 8, padding: '1rem', boxShadow: '0 2px 8px #0001' }}
                     >
-                      <li>Led a team project under strict deadlines, fostering collaboration and delivering all tasks on time without major issues.</li>
-                      <li>Mentored peers by simplifying complex technical concepts, improving team performance and knowledge retention.</li>
+                      <li>Owned end-to-end delivery under tight timelines, aligning stakeholders and unblocking dependencies to ship on schedule.</li>
+                      <li>Leading peers by distilling complex concepts into actionable patterns, lifting team velocity and knowledge retention.</li>
                     </motion.ul>
                   )}
                 </li>
@@ -240,9 +240,9 @@ export default function About() {
                       transition={{ duration: 0.3 }}
                       style={{ margin: '0.5rem 0 0 1.5rem', color: '#374151', fontSize: '1em', background: '#f8fafc', borderRadius: 8, padding: '1rem', boxShadow: '0 2px 8px #0001' }}
                     >
-                      <li>Developed and implemented integration systems using SOAP, REST, and EDI, improving data exchange efficiency with external customers.</li>
-                      <li>Reduced server-side resource usage by 25% by optimizing data requirements and automating daily report generation.</li>
-                      <li>Developed Arduino code to fully automate the product packaging process, integrating manufacturing systems to reduce headcount and increase precision.</li>
+                      <li>Built and hardened B2B integrations (SOAP/REST/EDI) that improved data exchange reliability with external customers.</li>
+                      <li>Cut backend resource footprint by ~25% through payload trimming, caching, and automating daily reporting.</li>
+                      <li>Automated the packaging line with embedded firmware + system integration, reducing headcount needs and boosting accuracy.</li>
                     </motion.ul>
                   )}
                 </li>

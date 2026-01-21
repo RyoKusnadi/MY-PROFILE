@@ -25,7 +25,7 @@ const letterAnimation = {
 
 export default function Hero() {
   const title = "Hi, I'm Ryo Kusnadi";
-  const subtitle = "A Back End Developer";
+  const subtitle = "Backend & distributed systems engineer";
 
   return (
     <section id="home" className={styles.hero}>
@@ -59,7 +59,7 @@ export default function Hero() {
             className={styles.description}
             variants={fadeInUp}
           >
-            I build exceptional digital experiences that make an impact.
+            I specialize in high-scale services, data correctness, and resilient payouts with measurable impact.
           </motion.p>
 
           <motion.div 
@@ -67,7 +67,7 @@ export default function Hero() {
             variants={fadeInUp}
           >
             <motion.a
-              href="#projects"
+              href="#my-works"
               className={styles.primaryButton}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -75,12 +75,12 @@ export default function Hero() {
               View My Work
             </motion.a>
             <motion.a
-              href="#about"
+              href="#case-studies"
               className={styles.secondaryButton}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Learn More
+              View Case Studies
             </motion.a>
           </motion.div>
 

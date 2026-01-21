@@ -15,6 +15,28 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Ryo Kusnadi | Software Engineer",
   description: "Personal profile and portfolio showcasing my work and experience",
+  openGraph: {
+    title: "Ryo Kusnadi | Software Engineer",
+    description: "Backend & distributed systems engineer focused on reliability and scale.",
+    url: "https://ryokusnadi.com",
+    siteName: "Ryo Kusnadi",
+    images: [
+      {
+        url: "/main.png",
+        width: 1200,
+        height: 630,
+        alt: "Ryo Kusnadi Portfolio",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ryo Kusnadi | Software Engineer",
+    description: "Backend & distributed systems engineer focused on reliability and scale.",
+    images: ["/main.png"],
+  },
   icons: {
     icon: [
       { url: '/icon.svg', type: 'image/svg+xml' }

@@ -47,6 +47,16 @@ const contactLinks = [
 ];
 
 export default function Contact() {
+  const [formState, setFormState] = useState({ name: '', email: '', message: '' });
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const { name, email, message } = formState;
+    const subject = encodeURIComponent(`Hello from ${name || 'your site'}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+    window.location.href = `mailto:ryokusnadi@gmail.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <section id="contact" className={styles.contact}>
       <div className={styles.container}>
@@ -122,6 +132,57 @@ export default function Contact() {
             </motion.a>
           ))}
         </div>
+
+        <motion.div
+          className={styles.formCard}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <h3 className={styles.formTitle}>Send a message</h3>
+          <p className={styles.formSubtitle}>I’ll get back to you shortly.</p>
+          <form className={styles.form} onSubmit={onSubmit}>
+            <label className={styles.label}>
+              Name
+              <input
+                className={styles.input}
+                type="text"
+                name="name"
+                value={formState.name}
+                onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                placeholder="Your name"
+              />
+            </label>
+            <label className={styles.label}>
+              Email
+              <input
+                className={styles.input}
+                type="email"
+                name="email"
+                required
+                value={formState.email}
+                onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                placeholder="you@example.com"
+              />
+            </label>
+            <label className={styles.label}>
+              Message
+              <textarea
+                className={styles.textarea}
+                name="message"
+                rows={4}
+                required
+                value={formState.message}
+                onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                placeholder="How can I help?"
+              />
+            </label>
+            <button type="submit" className={styles.submitButton}>
+              Send Email
+            </button>
+          </form>
+        </motion.div>
       </div>
     </section>
   );

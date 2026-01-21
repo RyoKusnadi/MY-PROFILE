@@ -9,6 +9,7 @@ const navItems = [
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
   { name: 'My Works', href: '#my-works' },
+  { name: 'Case Studies', href: '#case-studies' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -113,13 +114,6 @@ export default function Header() {
                       // Force override overflow to auto with !important
                       document.body.style.setProperty('overflow', 'auto', 'important');
                       document.documentElement.style.setProperty('overflow', 'auto', 'important');
-                      const bodyOverflow = document.body.style.overflow;
-                      const htmlOverflow = document.documentElement.style.overflow;
-                      const computedBodyOverflow = window.getComputedStyle(document.body).overflow;
-                      const computedHtmlOverflow = window.getComputedStyle(document.documentElement).overflow;
-                      console.log('Body overflow:', bodyOverflow, '| Computed:', computedBodyOverflow);
-                      console.log('HTML overflow:', htmlOverflow, '| Computed:', computedHtmlOverflow);
-                      console.log('Scroll position before:', window.scrollY);
                       if (section) {
                         // Get header height
                         const header = document.querySelector('header');
@@ -133,14 +127,10 @@ export default function Header() {
                           top: sectionTop - headerHeight,
                           behavior: 'smooth'
                         });
-                        setTimeout(() => {
-                          console.log('Scroll position after:', window.scrollY);
-                        }, 700);
                         let parent = section.parentElement;
                         while (parent && parent !== document.body) {
                           const overflowY = window.getComputedStyle(parent).overflowY;
                           if (overflowY === 'auto' || overflowY === 'scroll') {
-                            console.log('Found scrollable parent:', parent);
                             parent.scrollTo({
                               top: section.offsetTop - headerHeight,
                               behavior: 'smooth'
